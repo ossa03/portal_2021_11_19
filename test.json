@@ -1,0 +1,15 @@
+{
+	"snippet": {
+		"channelId": "UC9jtlMFkc_63Qor1jfgGT1g",
+		"channelTitle": "Jesus, Take the Compiler",
+		"description": "description",
+		"playlistId": "PLdUwL9O_dBokaW-aavCp3ppd6ynTs-gd2",
+		"position": "1",
+		"publishedAt": "2021-07-28T00:30:10Z",
+		"resourceId": { "kind": "youtube#video", "videoId": "WGC0DbUDOPI" },
+		"thumbnails": { "medium": { "hegit": "90", "width": "90", "url": "sergserg" } },
+		"title": "Styles and Gradient - Chakra UI",
+		"videoOwnerChannelId": "UC9jtlMFkc_63Qor1jfgGT1g",
+		"videoOwnerChannelTitle": "Jesus, Ta"
+	}
+}
