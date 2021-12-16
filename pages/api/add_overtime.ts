@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import NextCors from 'nextjs-cors'
 import axios from 'axios'
 
-import { FormValues } from '../form'
+import { FormValues } from '../overtimeForm'
 
 type ErrorMessage = { error: string } | any
 

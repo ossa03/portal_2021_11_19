@@ -1,5 +1,4 @@
-import { VFC, FC } from 'react'
-import { useForm, NestedValue } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { format } from 'date-fns'
 import {
@@ -29,7 +28,7 @@ export type FormValues = {
 	description: string
 }
 
-const Form: FC = () => {
+const OvertimeForm = () => {
 	const today = new Date()
 	const str_today = format(today, 'yyyy-MM-dd')
 	const str_now = format(today, 'HH:mm')
@@ -58,7 +57,7 @@ const Form: FC = () => {
 			console.log(postData)
 
 			// POST to '/api/add
-			axios.post('/api/add', { data: postData })
+			axios.post('/api/add_overtime', { data: postData })
 			console.log('送信したよ')
 		} else {
 			console.log('送信できませんでした')
@@ -73,8 +72,8 @@ const Form: FC = () => {
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Flex d='colomnu' h='auto' w='500px' my={8} p={6} mx='auto' border='1px' rounded='md' borderColor='gray.200'>
-					<Heading w='full' fontWeight='semibold' fontSize='2xl' textAlign='center' my={6}>
+				<Flex d='colomnu' h='full' w='500px' my={8} p={6} mx='auto' border='1px' rounded='md' borderColor='gray.200'>
+					<Heading w='full' fontWeight='semibold' fontSize='2xl' textAlign='center' my={4}>
 						時間外登録フォーム
 					</Heading>
 
@@ -141,4 +140,4 @@ const Form: FC = () => {
 	)
 }
 
-export default Form
+export default OvertimeForm

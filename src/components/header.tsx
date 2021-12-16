@@ -1,32 +1,73 @@
 import { VFC } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Center, Box, Flex, HStack, Divider, Container, AspectRatio, Text } from '@chakra-ui/react'
+import { Flex, HStack, Divider, Text, Tooltip, IconButton } from '@chakra-ui/react'
 
-import Link from './link'
+// icons
+import { HiOutlineHome, HiOutlineClock, HiOutlineDocumentText, HiOutlinePlay } from 'react-icons/hi'
+
+import ChakraLink from './link'
 
 import Logo from '../../public/logo_shiroishi.jpg'
 
-const Header: VFC = () => {
+const navMenuList = [
+	{ label: 'Home', href: '/', icon: HiOutlineHome, area_label: 'home' },
+	{ label: '時間外登録', href: '/overtimeForm', icon: HiOutlineClock, area_label: 'overtime' },
+	{ label: 'マニュアル', href: '/manualList', icon: HiOutlineDocumentText, area_label: 'manual' },
+	{ label: '動画', href: '/playlist', icon: HiOutlinePlay, area_label: 'movie' },
+]
+
+const Header = () => {
 	const router = useRouter()
 
 	return (
 		<>
-			<Flex h='80px' w='full' justifyContent='flex-start' alignItems='center' p={4}>
-				<Flex cursor='pointer' justify='center' align='center'>
-					<Image src={Logo} alt='logo' width='70px' height='70px' onClick={() => router.push('/')} />
+			<Flex
+				as='header'
+				position='fixed'
+				zIndex={200}
+				h='80px'
+				w='full'
+				justifyContent='space-between'
+				alignItems='center'
+				p={4}
+				borderBottomWidth={1}
+				borderColor={'gray.300'}
+				// bgColor={'white'}
+				backgroundColor='rgba(255,255, 255, 0.8)'
+				backdropFilter='saturate(180%) blur(1px)'
+			>
+				{/* logo */}
+				<Flex
+					cursor='pointer'
+					justify='center'
+					align='center'
+					onClick={() => router.push('/')}
+					_hover={{ opacity: '0.8' }}
+				>
+					<Image src={Logo} alt='logo' width='70px' height='70px' />
+					<Text as='h1' fontWeight='semibold' fontSize='2xl' ml={4}>
+						放射線科ポータル
+					</Text>
 				</Flex>
-				<HStack flexGrow={1} justifyContent='center' w='full' spacing={6}>
-					<Link href='/' cursor='pointer'>
-						<Text as='a' fontSize='xl' textDecoration='none'>
-							Home
-						</Text>
-					</Link>
-					<Link href='/form' cursor='pointer'>
-						<Text as='a' fontSize='xl' textDecoration='none'>
-							Form
-						</Text>
-					</Link>
+
+				{/* navigation */}
+				<HStack justifyContent='start' mr={10} spacing={1}>
+					{/* navMenu */}
+					{navMenuList.map((nav) => (
+						<ChakraLink href={nav.href} cursor='pointer' key={nav.label}>
+							<HStack spacing={1}>
+								<IconButton
+									aria-label={nav.area_label}
+									icon={<nav.icon />}
+									size={'md'}
+									variant={'ghost'}
+									justifyContent={'flex-end'}
+								/>
+								<Text textDecoration='none'>{nav.label}</Text>
+							</HStack>
+						</ChakraLink>
+					))}
 				</HStack>
 			</Flex>
 			<Divider />
