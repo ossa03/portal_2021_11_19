@@ -22,7 +22,9 @@ const Header = () => {
 
 	return (
 		<>
+			{/* 画面サイズmd以上のheader ... */}
 			<Flex
+				display={{ md: 'flex' }}
 				as='header'
 				position='fixed'
 				zIndex={200}
@@ -33,8 +35,7 @@ const Header = () => {
 				p={4}
 				borderBottomWidth={1}
 				borderColor={'gray.300'}
-				// bgColor={'white'}
-				backgroundColor='rgba(255,255, 255, 0.8)'
+				backgroundColor='rgba(255,255, 255, 0.9)'
 				backdropFilter='saturate(180%) blur(1px)'
 			>
 				{/* logo */}
@@ -47,7 +48,7 @@ const Header = () => {
 				>
 					<Image src={Logo} alt='logo' width='70px' height='70px' />
 					<Text as='h1' fontWeight='semibold' fontSize='2xl' ml={4}>
-						放射線科ポータル
+						放射線部
 					</Text>
 				</Flex>
 
@@ -63,6 +64,7 @@ const Header = () => {
 									size={'md'}
 									variant={'ghost'}
 									justifyContent={'flex-end'}
+									_hover={{ bg: 'inherit' }}
 								/>
 								<Text textDecoration='none'>{nav.label}</Text>
 							</HStack>
@@ -71,6 +73,11 @@ const Header = () => {
 				</HStack>
 			</Flex>
 			<Divider />
+			{/* ... 画面サイズmd以上のheader */}
+
+			{/* TODO mobile用のnavigationを作成する
+							 headerはハンバーガーメニューとlogoにする
+							 メニューを押したらDrawerで表示する */}
 		</>
 	)
 }
